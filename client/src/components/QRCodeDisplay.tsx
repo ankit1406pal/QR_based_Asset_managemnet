@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Download, CheckCircle2 } from "lucide-react";
 import StatusBadge from "./StatusBadge";
 import type { InsertAsset } from "@shared/schema";
+import { formatDate } from "@shared/datetime";
 
 interface QRCodeDisplayProps {
   assetData: InsertAsset & { id: string };
@@ -103,7 +104,7 @@ export default function QRCodeDisplay({ assetData, onClose }: QRCodeDisplayProps
           <div>
             <div className="text-muted-foreground">Date</div>
             <div className="font-medium" data-testid="text-date">
-              {new Date(assetData.date).toLocaleDateString()}
+              {formatDate(assetData.date)}
             </div>
           </div>
         </div>

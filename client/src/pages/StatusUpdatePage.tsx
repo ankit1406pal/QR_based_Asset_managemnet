@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import StatusBadge from "@/components/StatusBadge";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import type { Asset } from "@shared/schema";
+import { formatDate } from "@shared/datetime";
 
 export default function StatusUpdatePage() {
   const [, params] = useRoute("/status/:id");
@@ -116,7 +117,7 @@ export default function StatusUpdatePage() {
             </div>
             <div>
               <div className="text-sm text-muted-foreground mb-1">Date</div>
-              <div data-testid="text-date">{new Date(asset.date).toLocaleDateString()}</div>
+              <div data-testid="text-date">{formatDate(asset.date)}</div>
             </div>
           </div>
 

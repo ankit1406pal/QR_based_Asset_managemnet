@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertAssetSchema } from "@shared/schema";
 import * as XLSX from 'xlsx';
 import { z } from 'zod';
+import { formatDate, formatTimestamp } from "@shared/datetime";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all assets
@@ -141,9 +142,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         'Serial Number': asset.serialNumber,
         'MAC Address': asset.macAddress,
         'Buyback Status': asset.buybackStatus,
-        'Date': asset.date.toISOString().split('T')[0],
-        'Created At': asset.createdAt.toISOString(),
-        'Updated At': asset.updatedAt.toISOString(),
+        'Date': formatDate(asset.date),
+        'Created At': formatTimestamp(asset.createdAt),
+        'Updated At': formatTimestamp(asset.updatedAt),
         'Status of Entries & Assets': asset.statusLog,
       }));
 

@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search, Eye, Download, PackageOpen, Trash2, Pencil, FileDown, AlertTriangle } from "lucide-react";
 import StatusBadge from "./StatusBadge";
 import type { InsertAsset } from "@shared/schema";
+import { formatDate } from "@shared/datetime";
 
 interface AssetWithId extends InsertAsset {
   id: string;
@@ -220,7 +221,7 @@ export default function AssetDashboard({
                           <StatusBadge status={asset.buybackStatus} />
                         </TableCell>
                         <TableCell>
-                          {new Date(asset.date).toLocaleDateString()}
+                          {formatDate(asset.date)}
                         </TableCell>
                         <TableCell className="text-right">
                           <div className="flex justify-end gap-2">
@@ -315,7 +316,7 @@ export default function AssetDashboard({
                           </div>
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">Date:</span>
-                            <span>{new Date(asset.date).toLocaleDateString()}</span>
+                            <span>{formatDate(asset.date)}</span>
                           </div>
                         </div>
                         <div className="flex gap-2 pt-2 flex-wrap">
